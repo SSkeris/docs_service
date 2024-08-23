@@ -139,3 +139,13 @@ CELERY_BEAT_SCHEDULE = {
         'schedule': timedelta(seconds=10),
     },
 }
+
+# Swagger
+
+SWAGGER_SETTINGS = {
+    'SECURITY_DEFINITIONS': {
+        'basic': {
+            'type': 'basic'
+        }
+    },
+}
