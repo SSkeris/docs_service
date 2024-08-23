@@ -14,7 +14,7 @@ def send_admin_notification(document_id):
         subject='Загружен новый документ',
         message=f'Новый документ загружен пользователем {document.user.username}.',
         from_email=settings.EMAIL_HOST_USER,
-        recipient_list=['admin@example.com'],
+        recipient_list=[settings.ADMIN_EMAIL],
         fail_silently=False,
     )
 
