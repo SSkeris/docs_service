@@ -12,11 +12,10 @@ class UserTest(TestCase):
 
     def test_create_user(self):
         data = {
-            'username': 'testuser',
             'email': 'testuser@example.com',
             'password': 'password123'
         }
-        response = self.client.post(reverse('user-list'), data, format='json')
+        response = self.client.post(reverse('users:users-list'), data, format='json')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(User.objects.count(), 1)
         self.assertEqual(User.objects.first().email, 'testuser@example.com')

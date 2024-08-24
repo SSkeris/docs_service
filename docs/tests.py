@@ -1,16 +1,20 @@
 from django.test import TestCase
-from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
+
 from rest_framework.test import APIClient
 from .models import Document
+
+User = get_user_model()
 
 
 class DocumentTest(TestCase):
     """ Тестирование загрузки документа с использованием Django REST Framework. """
 
     def setUp(self):
-        self.user = User.objects.create_user(username='testuser', password='12345')
+        self.user = User.objects.create(email='test@user.com', password='12345')
         self.client = APIClient()
-        self.client.login(username='testuser', password='12345')
+        self.client.login(email='test@user.com', password='12345')
+        self.client.force_authenticate(user=self.user)
 
     def test_upload_document(self):
         """ Эта функция тестирует загрузку документа с использованием Django REST Framework.
