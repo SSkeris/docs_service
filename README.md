@@ -29,7 +29,6 @@ POST /api/users/
 Пример запроса:
 
     {
-      "username": "testuser",
       "email": "testuser@example.com",
       "password": "password123"
     }
