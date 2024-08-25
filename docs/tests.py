@@ -25,7 +25,7 @@ class DocumentTest(TestCase):
         with open('test_document.txt', 'w') as f:
             f.write('test document content')
         with open('test_document.txt', 'rb') as f:
-            response = self.client.post('/api/documents/', {'file': f}, format='multipart')
+            response = self.client.post('/api/documents/', {'file': f, 'user': 1}, format='multipart')
         self.assertEqual(response.status_code, 201)
         self.assertEqual(Document.objects.count(), 1)
         self.assertEqual(Document.objects.first().user, self.user)
